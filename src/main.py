@@ -1,6 +1,17 @@
 import threading
 import time
 import os
+# إنشاء مجلد logs تلقائيًا إن لم يكن موجودًا
+log_dir = 'logs'
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+
+# إعداد التسجيل في ملف bot.log داخل مجلد logs
+logging.basicConfig(
+    filename=os.path.join(log_dir, 'bot.log'),
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
 import logging
 
 # استيرادات من باقي ملفات المشروع
@@ -15,18 +26,6 @@ from config import (
     PURCHASE_AMOUNT
 )
 from bitget_client import BitgetClient
-
-# إنشاء مجلد logs تلقائيًا إن لم يكن موجودًا
-log_dir = 'logs'
-if not os.path.exists(log_dir):
-    os.makedirs(log_dir)
-
-# إعداد التسجيل في ملف bot.log داخل مجلد logs
-logging.basicConfig(
-    filename=os.path.join(log_dir, 'bot.log'),
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
 
 def log_event(msg):
     timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
