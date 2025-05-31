@@ -1,3 +1,4 @@
+import logging
 import threading
 import time
 import os
@@ -12,7 +13,6 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
-import logging
 
 # استيرادات من باقي ملفات المشروع
 from spot_monitor import start_spot_monitor
